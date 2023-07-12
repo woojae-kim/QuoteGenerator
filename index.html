@@ -8,7 +8,7 @@
     line-height: 1;
   }
 
-  header {
+  #quote-author {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -56,15 +56,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Quote generator </title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script> 
 </head>
 
 <body>
   <!-- quote author -->
-  <header id = "quote-author">
-    <h1>
-      Author
-    </h1>
-  </header>
+  <div>
+    <p id="quote-author">Quote Author</p>
+  </div>
   <!-- quote body -->
   <p id="quote-body">
     Quote body
