@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+  body {
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  #quote-body {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  #quote-info {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #generate-quote {
+      border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 2rem;
+  color: #000000;
+  border: black;
+  cursor: pointer;
+  background-color: #e2e2e2;
+  transition: background-color 0.3s ease;
+}
+
+#generate-quote.clicked {
+  background-color: #d5d5d5;
+}
+
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quote generator </title>
+</head>
+
+<body>
+  <!-- quote author -->
+  <header id = "quote-author">
+    <h1>
+      Author
+    </h1>
+  </header>
+  <!-- quote body -->
+  <p id="quote-body">
+    Quote body
+  </p>
+  <!-- quote info -->
+  <p id="quote-info">
+    Quote info
+  </p>
+
+ <!-- button to generate a quote -->
+ <div class="container">
+  <button type="button" id="generate-quote">
+    Generate Quote
+  </button>
+</div>
+  
+
+  <!-- connect html to js -->
+  <script src = 'main.js'></script>
+
+</body>
+</html>
