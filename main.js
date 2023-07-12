@@ -18,7 +18,7 @@ let randInt = getRandomInt(category.length);
 $.ajax({
   method: 'GET',
   url: 'https://api.api-ninjas.com/v1/quotes?category=' + category[randInt],
-  headers: { 'X-Api-Key': 'qk9jnZV/yQUu9C1F41j1MA==fjWCyWGXrcpj5jQB'},
+  headers: { 'X-Api-Key': ''},
   contentType: 'application/json',
   success: function(result) {
     const qAuthor = document.getElementById('quote-author').textContent = result[0].author;
