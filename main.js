@@ -1,41 +1,88 @@
-// api request
+<!DOCTYPE html>
+<html lang="en">
 
-fetch('https://api.api-ninjas.com/v1/quotes', {
-  headers: {
-    'X-API-Key': 'qk9jnZV/yQUu9C1F41j1MA==fjWCyWGXrcpj5jQB'
+<style>
+
+  body {
+    font-size: 15px;
+    line-height: 1;
   }
-})
-  .then(response => response.json())
-  .then(data => {
-    // to use data in code
-    console.log(data);
-  })
-  .catch(error => {
-    // Handle any errors that occur during the request
-    console.error(error);
-  });
 
-  // Fetch quote function
-async function getRandomQuote() {
-  const response = await fetch('https://api.api-ninjas.com/v1/quotes');
-  const data = await response.json();
-  return { quote: data.data[0].quoteText, author: data.data[0].quoteAuthor };
+  #quote-author {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  #quote-body {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  #quote-info {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #generate-quote {
+      border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 2rem;
+  color: #000000;
+  border: black;
+  cursor: pointer;
+  background-color: #e2e2e2;
+  transition: background-color 0.3s ease;
 }
 
-// Display a random quote on the page
-function displayRandomQuote() {
-  getRandomQuote().then(quote => {
-    const qAuthor = document.getElementById('quote-author');
-    const qBody = document.getElementById('quote-body');
-    qAuthor.textContent = quote.author;
-    qBody.textContent = quote.quote;
-  }).catch(error => {
-    console.error(error);
-  });
+#generate-quote.clicked {
+  background-color: #d5d5d5;
 }
 
-// event for on click
-const genQuoteButton = document.getElementById('generate-quote');
-genQuoteButton.addEventListener('click', displayRandomQuote);
 
+</style>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quote generator </title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script> 
+</head>
+
+<body>
+  <!-- quote author -->
+  <div>
+    <p id="quote-author">Quote Author</p>
+  </div>
+  <!-- quote body -->
+  <p id="quote-body">
+    Quote body
+  </p>
+  <!-- quote info -->
+  <p id="quote-info">
+    Quote info
+  </p>
+
+ <!-- button to generate a quote -->
+ <div class="container">
+  <button type="button" id="generate-quote">
+    Generate Quote
+  </button>
+</div>
+  
+
+  <!-- connect html to js -->
+  <script src = 'main.js'></script>
+
+</body>
+</html>
