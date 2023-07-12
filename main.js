@@ -1,88 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<style>
+const category = ['age', 'art', 'attitude', 'business', 'communications', 'computers'
+, 'education', 'equality', 'experience', 'failure', 'fitness', 'forgiveness', 'future', 'history',
+'inspirational', 'intelligence', 'knowledge', 'leadership', 'learning', 'legal', 'life', 'medical', 'money', 
+'success'];
 
-  body {
-    font-size: 15px;
-    line-height: 1;
-  }
-
-  #quote-author {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  #quote-body {
-    font-size: 2rem;
-    font-style: italic;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  #quote-info {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    #generate-quote {
-      border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 2rem;
-  color: #000000;
-  border: black;
-  cursor: pointer;
-  background-color: #e2e2e2;
-  transition: background-color 0.3s ease;
+//function for getting a random number between 0 and max, when calling the function, replace max with 
+//max desired length
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 
-#generate-quote.clicked {
-  background-color: #d5d5d5;
+async function getRandomQuote() {
+
+//infinitley generate a new number and show a photo, category length is the max
+let randInt = getRandomInt(category.length);
+
+$.ajax({
+  method: 'GET',
+  url: 'https://api.api-ninjas.com/v1/quotes?category=' + category[randInt],
+  headers: { 'X-Api-Key': 'qk9jnZV/yQUu9C1F41j1MA==fjWCyWGXrcpj5jQB'},
+  contentType: 'application/json',
+  success: function(result) {
+    const qAuthor = document.getElementById('quote-author').textContent = result[0].author;
+      const qBody = document.getElementById('quote-body').textContent = result[0].quote;
+      console.info(result);
+
+  },
+  error: function ajaxError(jqXHR) {
+      console.error('Error: ', jqXHR.responseText);
+  }
+});
+
+};
+
+// Display a random quote on the page
+function displayRandomQuote() {
+  getRandomQuote().then(quote => {
+    const qAuthor = document.getElementById('quote-author');
+    const qBody = document.getElementById('quote-body');
+    console.info(quote);
+    // qAuthor.textContent = quote.author;
+    // qBody.textContent = quote.quote;
+  }).catch(error => {
+    console.error(error);
+  });
 }
 
+// event for on click
+const genQuoteButton = document.getElementById('generate-quote');
+genQuoteButton.addEventListener('click', getRandomQuote);
 
-</style>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Quote generator </title>
-  <script src="http://code.jquery.com/jquery-latest.js"></script> 
-</head>
-
-<body>
-  <!-- quote author -->
-  <div>
-    <p id="quote-author">Quote Author</p>
-  </div>
-  <!-- quote body -->
-  <p id="quote-body">
-    Quote body
-  </p>
-  <!-- quote info -->
-  <p id="quote-info">
-    Quote info
-  </p>
-
- <!-- button to generate a quote -->
- <div class="container">
-  <button type="button" id="generate-quote">
-    Generate Quote
-  </button>
-</div>
-  
-
-  <!-- connect html to js -->
-  <script src = 'main.js'></script>
-
-</body>
-</html>
